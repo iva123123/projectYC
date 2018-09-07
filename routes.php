@@ -22,9 +22,9 @@
       $controller->{ $action }();
     }
 
-    $controllers = array('pages' => ['home', 'error'],
-                         'users' => ['login', 'showLogin', 'register', 'showRegister', 'logout', 'verify', 'subscribe', 'showSubscribe' ],
-                         'posts' => ['upload', 'showUploads', 'showEvents', 'events']
+    $controllers = array('pages' => ['home', 'error','aboutus', 'discovery', 'showPosts','showEvent' ],
+                         'users' => ['login', 'showLogin', 'register', 'showRegister', 'logout', 'verify', 'subscribe', 'showSubscribe', 'addPost', 'editPost', 'deletePost', 'editProfile', 'showPost', 'editPage', 'profile'],
+                         'posts' => [ 'getPostsById', 'getPost', 'getEventById', 'getEvent', 'events']
                        );
 
     if (array_key_exists($controller, $controllers)) {

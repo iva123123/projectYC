@@ -43,7 +43,7 @@
             <div class="row mb-4" >
 
               <div class="col-md-4" >
-                <a href="index.php?controller=posts&action=showEvents" id="box">
+                <a href="index.php?controller=pages&action=showEvent" id="box">
                   <div class="card  text-center" id="box" >
                     <div class="card-body dark-box hbox"  >
                       <i class="fas fa fa-music fa-3x"></i>
@@ -53,7 +53,7 @@
                   </div>
                 </div></a>
                 <div class="col-md-4">
-                  <a href="" id="box">
+                  <a href="index.php?controller=pages&action=showPosts" id="box">
                     <div class="card  text-center" id="box" >
                       <div class="card-body dark-box hbox">
                         <i class="fas fa fa-paint-brush fa-3x"></i>

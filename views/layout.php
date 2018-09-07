@@ -28,7 +28,7 @@
       <header>
         <nav class="navbar navbar-expand-sm  fixed-top  navbar-light transparent">
          <div class="container">
-           <a href="home.html" class="navbar-brand">YourClique</a>
+           <a href="index.php?controller=pages&action=home" class="navbar-brand">YourClique</a>
            <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
              <span class="navbar-toggler-icon"></span>
            </button>
@@ -38,7 +38,7 @@
                  <a href="discover.html" class="nav-link">Discover</a>
                </li>
                <li class="nav-item">
-                 <a href="aboutus.html" class="nav-link">About Us</a>
+                 <a href="index.php?controller=pages&action=aboutus" class="nav-link">About Us</a>
                </li>
                <li class="nav-item">
                  <a href="blog.html" class="nav-link">Blog</a>
