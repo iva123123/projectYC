@@ -39,11 +39,11 @@
                </li>
                <li class="nav-item">
                  <a href="index.php?controller=pages&action=aboutus" class="nav-link">About Us</a>
-               </li>
+               </li
                <li class="nav-item">
                  <a href="blog.html" class="nav-link">Blog</a>
                </li>
-                <?php if(isset($_SESSION['user_id'])) : ?>
+                <?php if($action == 'profile') : ?>
                <li class="nav-item">
                 <a class="nav-link" href="index.php?controller=users&action=logout"><i class="fa fa-sign-out" aria-hidden="true"></i> Logout</a>
                </li>

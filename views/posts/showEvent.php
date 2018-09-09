@@ -1,6 +1,8 @@
+
 <section id="event" class="py-5 mt-5">
   <div class="card-body">
     <div class="row" id="collapseOne">
+      <?php if($_GET["controller"] == 'admin'){ ?>
       <div class="col-md-4 mb-4 text-center">
         <button class="btn btn-secondary" type="button" data-toggle="modal" data-target="#Mymodal1" ><h3>Create</h3></button>
         <div class="modal" id="Mymodal1" role="dialog">
@@ -12,7 +14,7 @@
               </div>
               
               <div class="modal-body">
-                <form class=" text-center" action="index.php?controller=posts&action=events" method="post" enctype="multipart/form-data">
+                <form class=" text-center" action="index.php?controller=admin&action=events" method="post" enctype="multipart/form-data">
 
                   <div class="form-group">
                     <div class="input-group mb-3 input-group-sm">
@@ -36,6 +38,7 @@
           </div> 
         </div>
       </div>
+      <?php } ?>
       <div class="container">
         <div class="view-form">
           <div class="row">
@@ -52,53 +55,65 @@
                 <div class="col-sm-3">
                   <p><?php echo $body ?></p>
                   <img src="uploads/<?php echo $row['image']?>"><br><br>
-                  <a class="btn btn-info" href="editEvent.php?id_e=<?php echo $row['id_e']?>" title="click for edit" onlick="return confirm('Sure to edit this record')"><span class="glyphicon glyphicone-edit"></span>Edit</a>
-                  <a class="btn btn-danger" href="?id_e=<?php echo $row['id_e']?>" title="click for delete" onclick="return confirm('Sure to delete this record?')">Delete</a>
-                  <button class="btn btn-primary float-left" type="button" data-toggle="modal" data-target="#Mymodal3">Going</button>
-                  <div class="modal" id="Mymodal3" role="dialog">
-                    <div class="modal-dialog">
-                      <div class="modal-content ">
-                        <div class="modal-body">
-                          <form class=" text-center" action="index.php?controller=users&action=subscribe" method="post">
 
-                            <div class="input-group mb-3 input-group-sm ">
-                              <div class="input-group-prepend">
-                                <span class="input-group-text bg-primary ">
-                                 <i class="material-icons">&#xe554;</i>
-                               </span>
-                             </div>
-                             <input type="email" name="email"class="form-control" placeholder="Enter your email..."><br>
-                           </div>                          
-                           <input type="submit" value="Subscribe" class="btn btn-primary btn-block">                        
-                         </form>
+                  <?php if($_GET["controller"] == 'admin'){ ?>
+                    <form method="POST" action="index.php?controller=admin&action=editEvent">
+                      <input type="hidden" id="id" name="id"  value="<?php echo $posts[$key]["id_p"] ?>" >
+                      <input type="submit" class="btn btn-info" value="Edit"  title="click for edit" onlick="return confirm('Sure to edit this record')"><span class="glyphicon glyphicone-edit"></span></form>
+                    <?php } ?>
+
+                    <?php if($_GET["controller"] == 'admin'){ ?>
+                      <form method="POST" action="index.php?controller=admin&action=deleteEvent">
+                        <input type="hidden" id="id_p" name="id_p"  value="<?php echo $posts[$key]["id_p"] ?>" >
+
+                        <input type="submit"s class="btn btn-danger" value="Delete"  onclick="return confirm('Sure to delete this record?')">  </form>
+                      <?php } ?>
+
+                      <button class="btn btn-primary float-left" type="button" data-toggle="modal" data-target="#Mymodal3">Going</button>
+                      <div class="modal" id="Mymodal3" role="dialog">
+                        <div class="modal-dialog">
+                          <div class="modal-content ">
+                            <div class="modal-body">
+                              <form class=" text-center" action="index.php?controller=users&action=subscribe" method="post">
+
+                                <div class="input-group mb-3 input-group-sm ">
+                                  <div class="input-group-prepend">
+                                    <span class="input-group-text bg-primary ">
+                                     <i class="material-icons">&#xe554;</i>
+                                   </span>
+                                 </div>
+                                 <input type="email" name="email"class="form-control" placeholder="Enter your email..."><br>
+                               </div>                          
+                               <input type="submit" value="Subscribe" class="btn btn-primary btn-block">                        
+                             </form>
+                           </div>
+                         </div>
                        </div>
                      </div>
+                     <a href=""><button class="btn btn-primary float-right" type="button">Buy</button></a>  
+
                    </div>
-                 </div>
-                 <a href=""><button class="btn btn-primary float-right" type="button">Buy</button></a>  
-                 
-               </div>
 
-               <?php 
+                   <?php 
 
-             }
-           }
-           ?>
+                 }
+               }
+               ?>
+             </div>
+           </div>
          </div>
-       </div>
-     </div>
 
-   </section>
+       </section>
 
-   <?php 
-   if(isset($_GET["error"]) && $_GET["error"]!=""){
-    ?> 
-    <script>
-      alert("<?php echo $_GET["error"]; ?>");
-    </script>
-    <?php
-  }
-  ?>
+       <?php 
+       if(isset($_GET["error"]) && $_GET["error"]!=""){
+        ?> 
+        <script>
+          alert("<?php echo $_GET["error"]; ?>");
+        </script>
+        <?php
+      }
+      ?>
               <!-- <div class="row">
                 <div class="col">
                   <div class="card-columns">

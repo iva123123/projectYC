@@ -23,8 +23,9 @@
     }
 
     $controllers = array('pages' => ['home', 'error','aboutus', 'discovery', 'showPosts','showEvent' ],
-                         'users' => ['login', 'showLogin', 'register', 'showRegister', 'logout', 'verify', 'subscribe', 'showSubscribe', 'addPost', 'editPost', 'deletePost', 'editProfile', 'showPost', 'editPage', 'profile'],
-                         'posts' => [ 'getPostsById', 'getPost', 'getEventById', 'getEvent', 'events']
+                         'users' => ['login', 'showLogin', 'register', 'showRegister', 'logout', 'verify', 'subscribe', 'showSubscribe', 'addPost', 'editPost', 'deletePost', 'editProfile', 'showPost', 'editPage', 'profile','edit'],
+                         'posts' => [ 'getPostsById', 'getPost'],
+                         'admin' => ['event', 'getEventById', 'getEvent', 'deleteEvent', 'editEvent', 'update', 'editForm', 'showEvent']
                        );
 
     if (array_key_exists($controller, $controllers)) {
