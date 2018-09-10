@@ -17,15 +17,24 @@
         case 'posts':
         $controller = new PostsController();
         break;
+
+        case 'admin':
+        $controller = new admin();
+        break;
+
+        case 'remainder':
+        $controller = new remainder();
+        break;
       }
 
       $controller->{ $action }();
     }
 
-    $controllers = array('pages' => ['home', 'error','aboutus', 'discovery', 'showPosts','showEvent' ],
-                         'users' => ['login', 'showLogin', 'register', 'showRegister', 'logout', 'verify', 'subscribe', 'showSubscribe', 'addPost', 'editPost', 'deletePost', 'editProfile', 'showPost', 'editPage', 'profile','edit'],
+    $controllers = array('pages' => ['home', 'error','aboutus', 'discovery', 'showPosts', 'showEvent' ],
+                         'users' => ['login', 'showLogin', 'register', 'showRegister', 'logout', 'verify', 'subscribe', 'showSubscribe', 'addPost', 'editPost', 'deletePost', 'editProfile', 'showPost', 'editPage', 'profile','edit', 'going'],
                          'posts' => [ 'getPostsById', 'getPost'],
-                         'admin' => ['event', 'getEventById', 'getEvent', 'deleteEvent', 'editEvent', 'update', 'editForm', 'showEvent']
+                         'admin' => ['event', 'getEventById', 'getEvent', 'deleteEvent', 'editEvent', 'update', 'editForm', 'showEvent'],
+                         'remainder' => ['going']
                        );
 
     if (array_key_exists($controller, $controllers)) {

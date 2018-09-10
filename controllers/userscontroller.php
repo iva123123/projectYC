@@ -64,11 +64,11 @@ if ($submit){
   $result->execute([$email]);
 
   $user = $result->fetch(); 
-   
-   if($user['status'] == 'a'){ 
+
+  if($user['status'] == 'a'){ 
    $_SESSION["id"] = $user["id_u"];
-     header("location: index.php?controller=admin&action=showEvent");
-   }else{
+   header("location: index.php?controller=admin&action=showEvent");
+ }else{
 
   $_SESSION["id"] = $user["id_u"];
   header("location: index.php?controller=users&action=profile");
@@ -206,7 +206,8 @@ public function register(){
          }
        }
 
-      public function findUserbyEmail(){
+       
+       public function findUserbyEmail(){
         $db = DB::getInstance();
         $result = $db->prepare("SELECT email FROM users WHERE email = :email");
         $result->execute([$email]);
@@ -216,7 +217,7 @@ public function register(){
 
       public function showRegister(){
        require_once('views/users/showRegister.php');
-      }
+     }
 
      public function subscribe(){
 
@@ -233,6 +234,7 @@ public function register(){
 
         header("location: index.php?controller=pages&action=error");
       }
+      
     } 
 
     public function showSubscribe(){
@@ -289,18 +291,18 @@ public function register(){
     $db = DB::getInstance();
     $query = $db->prepare('SELECT * FROM users WHERE id_u = :id_u AND email = :email'); 
     $query->bindParam(':id_u', $_POST['id_u']);
-    $query->bindParam('email', $_POST['email']);
-     $query->execute();
-// echo"hi"; die;
-//     if ($query->fetchColumn() > 0){
-    $result=$db->prepare('INSERT INTO posts(user_id, image, body, postname) VALUES (:user_id, :image, :body, :postname)');
-    $result->execute(array('user_id' => $user_id, ':image' => $image, ':postname' => $postname, ':body' => $body));
+    $query->bindParam(':email', $_POST['email']);
+    $query->execute();
+    $user = $query->fetchAll();
+     print_r($user);
+    $email = $user['email'];
+    $user_id = $user['id_u'];
+    $result=$db->prepare('INSERT INTO posts(user_id, image, email, body, postname) VALUES (:user_id, :image, :email, :body, :postname)');
+    $result->execute(array('user_id' => $user_id, ':image' => $image, ':email' => $email, ':postname' => $postname, ':body' => $body));
 
     header("location:index.php?controller=users&action=profile");
-  
   }
 }
-
 
 
 public function showPost(){

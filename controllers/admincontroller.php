@@ -24,7 +24,7 @@ class admin{
 			$db = DB::getInstance();
 			$result=$db->prepare('INSERT INTO event(image, body, name) VALUES (:image, :body, :name)');
 			$result->execute(array(':image' => $image, ':name' => $name, ':body' => $body));
-			header("location:index.php?controller=pages&action=showEvent");
+			header("location:index.php?controller=admin&action=showEvent");
 		}
 	} 
 
@@ -63,7 +63,7 @@ class admin{
 			$result_delete=$db->prepare('DELETE FROM event WHERE id_e =:id_e');
 			$result_delete->bindParam(':id_e', $_POST['id_e']);
 			if($result_delete->execute()){
-				header("location:index.php?controller=users&action=profile");
+				header("location:index.php?controller=admin&action=showEvent");
 			}
 		}
 	}
@@ -139,8 +139,8 @@ class admin{
 	}
 
 	public function showEvent(){
-      require_once('views/posts/showEvent.php');
-    }
+		require_once('views/posts/showEvent.php');
+	}
 }
 
 ?>

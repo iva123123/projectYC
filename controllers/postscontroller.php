@@ -35,4 +35,12 @@ class PostsController{
    }
  }
 
+ public function getEventById(){
+  $db = DB::getInstance();
+
+    $result = $db->prepare("SELECT * FROM event WHERE id_e = :id_e ");
+    $result = $db->execute([$id_e]);
+    $user = $result->fetchAll();
+ }
+
 }

@@ -48,6 +48,11 @@
                 <a class="nav-link" href="index.php?controller=users&action=logout"><i class="fa fa-sign-out" aria-hidden="true"></i> Logout</a>
                </li>
                 <?php endif; ?>
+                 <?php if($controller == 'admin') : ?>
+               <li class="nav-item">
+                <a class="nav-link" href="index.php?controller=users&action=logout"><i class="fa fa-sign-out" aria-hidden="true"></i> Logout</a>
+               </li>
+                <?php endif; ?>
              </ul>
            </div>
          </div>
